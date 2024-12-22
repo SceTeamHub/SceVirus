@@ -77,6 +77,15 @@ timeout /t 2 >nul
 start "" "%rickRollURL%"
 timeout /t 5 >nul
 
+cls
+echo SYSTEM DISABLED - MOUSE INVERSION ACTIVATED
+timeout /t 2 >nul
+
+reg add "HKCU\Control Panel\Cursors" /v "MouseTrails" /t REG_DWORD /d 1 /f
+reg add "HKCU\Control Panel\Cursors" /v "Inverted" /t REG_DWORD /d 1 /f
+
+timeout /t 5 >nul
+
 exit
 
 :Animate
