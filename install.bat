@@ -6,6 +6,7 @@ setlocal enabledelayedexpansion
 
 set soundPath="%~dp0music.mp3"
 set boomMessage="BOOM! Your system is mine!"
+set rickRollURL="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 for /l %%C in (1,1,5) do (
     color 1f
@@ -71,7 +72,11 @@ timeout /t 2 >nul
 
 cls
 echo SYSTEM ONLINE - WELCOME BACK!
+timeout /t 2 >nul
+
+start "" "%rickRollURL%"
 timeout /t 5 >nul
+
 exit
 
 :Animate
